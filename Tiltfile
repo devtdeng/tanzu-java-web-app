@@ -1,4 +1,4 @@
-SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='harbor.pks-18.slot-34.tanzu-gss-labs.vmware.com/tap/apps')
+SOURCE_IMAGE = os.getenv("SOURCE_IMAGE", default='harbor.<domain>/tap/apps')
 LOCAL_PATH = os.getenv("LOCAL_PATH", default='.')
 NAMESPACE = os.getenv("NAMESPACE", default='default')
 
@@ -6,7 +6,7 @@ k8s_custom_deploy(
     'tanzu-java-web-app',
     apply_cmd="tanzu apps workload apply -f config/workload.yaml --live-update" +
                " --local-path " + LOCAL_PATH +
-               " --registry-ca-cert " + "/Users/tdeng/product/TAP/harbor-ca.pem" + 
+               " --registry-ca-cert " + "<PATH>P/harbor-ca.pem" + 
                " --source-image " + SOURCE_IMAGE +
                " --namespace " + NAMESPACE +
                " --yes >/dev/null" +
